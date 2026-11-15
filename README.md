@@ -9,7 +9,7 @@ Grade System for Final Project in I-ACSAD. To be passed on 11/25/26
 - Cancel option while entering data
 
 ## How to Run
-1. Download the repo (Code → Download ZIP) and extract it.
+1. Download the file and save as all files.
 2. Open `GradeSystem.java` in VS Code
 3. Run the code
 
