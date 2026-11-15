@@ -14,6 +14,5 @@ Grade System for Final Project in I-ACSAD. To be passed on 11/25/26
 3. Run the code
 
 ## Notes
-- Maximum of 9 subjects per semester. Unused slots are left blank and skipped when computing averages.
 - Yearly average = average of the two semester averages.
 - Preloaded sample students are included.
