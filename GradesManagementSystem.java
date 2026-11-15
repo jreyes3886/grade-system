@@ -1,5 +1,5 @@
 import java.io.*;
-
+//experiment here
 public class GradesManagementSystem {
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static int maxStudents = 50;
@@ -14,6 +14,7 @@ public class GradesManagementSystem {
     static int studentCount = 0;
 
     public static void main(String[] args) throws Exception {
+        preLoaded();
         String choice;
         do {
             showMenu();
@@ -34,10 +35,6 @@ public class GradesManagementSystem {
                 case "4":
                 case "add":
                     addStudent();
-                    break;
-                case "5":
-                case "delete":
-                    deleteGrade();
                     break;
                 case "0":
                 case "exit":
@@ -117,7 +114,7 @@ public class GradesManagementSystem {
 
             System.out.println("SEMESTER 1");
             System.out.printf("%-30s%s%n", "SUBJECTS", "GRADES"); // means exactly 30 spaces
-            for (int j = 0; j < maxStudents; j++) {
+            for (int j = 0; j < maxSubjects; j++) { //j < 9
                 if (sem1[i][j] != blank) { //if student records exists
                     System.out.printf("%-30s%s%n", sem1Subjects[i][j], sem1[i][j]); //prints all subjects and average grades
                 }
@@ -125,13 +122,14 @@ public class GradesManagementSystem {
             System.out.println("Average" + average(sem1[i])); //calls the average function and prints average 
             System.out.println("SEMESTER 2");
             System.out.printf("%-30s%s%n", "SUBJECTS", "GRADES");
-            for (int j = 0; j < maxStudents; j++) {
+            for (int j = 0; j < maxSubjects; j++) {
                 if (sem2[i][j] != blank) {
                     System.out.printf("%-30s%s%n", sem2Subjects[i][j], sem2[i][j]);
                 }
             }
-            System.out.println("Average" + average(sem2[i]));
+            System.out.println("Average " + average(sem2[i]));
         }
+        pause();
     }
 
     static double average(double[] grades) {
@@ -140,7 +138,7 @@ public class GradesManagementSystem {
         for (int i = 0; i < maxSubjects; i++) {
             if (grades[i] != blank) { //if the grades exist
                 sum += grades[i]; //adds grades each in that array
-                count++; //count every loop or array
+                count++; //count every loop
             }
         }
         if (count == 0) { //if the grades doesn't exist
