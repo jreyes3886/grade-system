@@ -10,7 +10,7 @@ Grade System for Final Project in I-ACSAD. To be passed on 11/25/26
 
 ## How to Run
 1. Download the file and save as all files.
-2. Open `GradeSystem.java` in VS Code
+2. Open `GradeManagementSystem.java` in VS Code
 3. Run the code
 
 ## Notes
