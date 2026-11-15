@@ -1,5 +1,5 @@
 import java.io.*;
-//experiment here
+//experiment heree
 public class dummy {
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static int maxStudents = 50;
