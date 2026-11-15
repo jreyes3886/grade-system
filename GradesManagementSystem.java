@@ -1,5 +1,4 @@
 import java.io.*;
-//experiment here
 public class GradesManagementSystem {
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static int maxStudents = 50;
