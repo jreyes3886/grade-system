@@ -88,6 +88,21 @@ public class GradesManagementSystem {
                 new double[] { 88, 90, 85, 91 },
                 new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
                 new double[] { 89, 92, 86, 90 });
+        saveStudent("Maria Santos",
+            new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
+            new double[] { 95, 89, 94, 90 },
+            new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
+            new double[] { 92, 88, 96, 91 });
+        saveStudent("Samantha Villanueva",
+            new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
+            new double[] { 96, 93, 90, 95 },
+            new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
+            new double[] { 94, 97, 92, 96 });
+         saveStudent("Nathaniel Cruz",
+            new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
+            new double[] { 85, 92, 88, 90 },
+            new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
+            new double[] { 89, 94, 86, 91 });
     }
 
     // save students grades
