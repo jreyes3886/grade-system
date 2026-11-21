@@ -18,8 +18,8 @@ public class GradesManagementSystem {
         String choice;
         do {
             showMenu();
-            choice = readChoice(); // calls readChoice function
-            switch (choice) { // get the input from readChoice
+            choice = input.readLine().trim().toLowerCase();
+            switch (choice) { // get the input from choice
                 case "1": // if the input is 1 or display
                 case "display":
                     displayAll(); // calls displayAll() function/method
@@ -38,7 +38,7 @@ public class GradesManagementSystem {
                     break;
                 case "5":
                 case "delete":
-                    deleteGrade();
+                    deleteStudent();
                     break;
                 case "0":
                 case "exit":
@@ -64,10 +64,6 @@ public class GradesManagementSystem {
         System.out.print("\nEnter menu number: ");
     }
 
-    static String readChoice() throws Exception {
-        return input.readLine().trim().toLowerCase();
-    }
-
     static void pause() throws Exception {
         System.out.print("Press Enter To Continue.");
         input.readLine();
@@ -89,26 +85,26 @@ public class GradesManagementSystem {
                 new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
                 new double[] { 89, 92, 86, 90 });
         saveStudent("Maria Santos",
-            new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-            new double[] { 95, 89, 94, 90 },
-            new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-            new double[] { 92, 88, 96, 91 });
+                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
+                new double[] { 95, 89, 94, 90 },
+                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
+                new double[] { 92, 88, 96, 91 });
         saveStudent("Samantha Villanueva",
-            new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-            new double[] { 96, 93, 90, 95 },
-            new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-            new double[] { 94, 97, 92, 96 });
-         saveStudent("Nathaniel Cruz",
-            new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-            new double[] { 85, 92, 88, 90 },
-            new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-            new double[] { 89, 94, 86, 91 });
+                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
+                new double[] { 96, 93, 90, 95 },
+                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
+                new double[] { 94, 97, 92, 96 });
+        saveStudent("Nathaniel Cruz",
+                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
+                new double[] { 85, 92, 88, 90 },
+                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
+                new double[] { 89, 94, 86, 91 });
     }
 
     // save students grades
     static void saveStudent(String name, String[] subs1, double[] g1, String[] subs2, double[] g2) throws Exception {
         if (studentCount < maxStudents) {
-            studentName[studentCount] = name; // gets the amount of the current students
+            studentName[studentCount] = name; // gets the student name in the specified row
         }
         for (int i = 0; i < maxSubjects; i++) {
             if (i < g1.length) { // if i is less than first semester length
@@ -126,10 +122,10 @@ public class GradesManagementSystem {
                 sem2[studentCount][i] = blank;
             }
         }
-        studentCount++; // goes to another student if applicable and loops
+        studentCount++; // goes to another student if applicable, counts the students and loops
     }
 
-    static void printStudent(int i) { // method that gets the current array/student
+    static void printStudent(int i) { // method that gets the current array/row
         System.out.println("-----------------------------------------------");
 
         System.out.println("SEMESTER 1");
@@ -168,7 +164,7 @@ public class GradesManagementSystem {
         pause();
     }
 
-    static double average(double[] grades) {
+    static double average(double[] grades) { // gets all the grade by looping
         double sum = 0;
         int count = 0;
         for (int i = 0; i < maxSubjects; i++) {
@@ -182,20 +178,23 @@ public class GradesManagementSystem {
         }
         return sum / count; // if grades exist the sum of grades is divided by the number of arrays or count
     }
+
+    // input validation, (String variable) means displaying the sysout
     static String onlyLetters(String name) throws Exception {
         String letter = "";
         while (true) {
             System.out.print(name);
-            letter = input.readLine().trim().toLowerCase();
-            if (letter.matches("[a-zA-Z]+")) {
+            letter = input.readLine().trim();
+            if (letter.matches("[a-zA-Z ]+")) {
                 return letter;
             } else {
                 System.out.println("Invalid input. Please enter letters only (A-Z).");
             }
         }
     }
+
     static String onlyNumbers(String number) throws Exception {
-         while (true) {
+        while (true) {
             System.out.print(number);
             String numberInput = input.readLine();
 
@@ -206,10 +205,61 @@ public class GradesManagementSystem {
                 System.out.println("Invalid input. Please enter digits only (0-9).");
             }
         }
-
     }
+
+    static String onlySubject(String name) throws Exception {
+        String letter = "";
+        while (true) {
+            System.out.print(name);
+            letter = input.readLine().trim();
+            if (letter.equalsIgnoreCase("cancel")) {
+                System.out.println("Cancelled. No inputs were saved.");
+                return null;
+            }
+            if (letter.matches("[a-zA-Z0-9 &]+")) {
+                return letter;
+            } else {
+                System.out.println("Invalid input. Please enter letters, numbers and symbols only (A-Z).");
+            }
+        }
+    }
+
+    static int onlySubjectAmount(String prompt) throws Exception {
+        while (true) {
+            System.out.print(prompt);
+            String text = input.readLine().trim();
+            if (text.matches("[1-9]")) {
+                return Integer.parseInt(text);
+            }
+            System.out.println("Invalid input. Enter subjects ranging from 1 to 9");
+        }
+    }
+
+    static double onlyGrades(String grades) throws Exception {
+        double value;
+        while (true) {
+            System.out.print(grades);
+            String number = input.readLine().trim();
+
+            if (number.equalsIgnoreCase("cancel")) {
+                return -1;
+            }
+            if (number.matches("(\\d+(\\.\\d*)?|\\.\\d+)")) {
+                value = Double.parseDouble(number);
+
+                if (value >= 0.0 && value <= 100.0) {
+                    return value;
+                }
+                System.out.println("Value must be between 0 and 100.");
+            } else {
+                System.out.println("Invalid input. Enter a valid number.");
+            }
+        }
+    }
+
     static int selectStudent() throws Exception {
-        String name = onlyLetters("Enter student name: ");
+        String name = onlyLetters("Enter student name: "); // calls onlyLetters method for input
+        name = name.toLowerCase();
         int matches[] = new int[studentCount]; // create new array for matching names
         int matchCount = 0;
         for (int i = 0; i < studentCount; i++) { // counts all students
@@ -218,11 +268,11 @@ public class GradesManagementSystem {
                 matchCount++; // counts in every store
             }
         }
-        if (matchCount == 0) {
+        if (matchCount == 0) { // if there is none
             System.out.println("Student not found.");
             return -1; // doesnt exist
         }
-        if (matchCount == 1) {
+        if (matchCount == 1) { // if there is one
             System.out.println("Student found!");
             return matches[0]; // doesn't need to ask
         }
@@ -247,20 +297,59 @@ public class GradesManagementSystem {
         String again;
         do {
             i = selectStudent();
-        if (i != -1) {
-            System.out.println("\nStudent: " + studentName[i]);
-            printStudent(i);
-            break;
-        }
-       System.out.print("Try again? (y/n): ");
-       again = input.readLine().trim().toLowerCase();
-    } while(again.equals("y"));
-    pause();
-}
-
-    static void deleteGrade() throws Exception {
-        System.out.println("Not implemented yet.");
+            if (i != -1) {
+                System.out.println("\nStudent: " + studentName[i]);
+                printStudent(i);
+                break;
+            }
+            System.out.print("Try again? (y/n): ");
+            again = input.readLine().trim().toLowerCase();
+        } while (again.equals("y"));
         pause();
+    }
+
+    static void addStudent() throws Exception {
+        if (studentCount < maxStudents) {
+            String name = onlyLetters("Enter student name: ");
+            int numOfSubs = onlySubjectAmount("Enter amount of subjects: ");
+            String[] subs1 = new String[numOfSubs];
+            double[] g1 = new double[numOfSubs];
+            String[] subs2 = new String[numOfSubs];
+            double[] g2 = new double[numOfSubs];
+            System.out.println("SEMESTER 1:");
+            System.out.println("TYPE CANCEL TO CANCEL");
+            for (int i = 0; i < numOfSubs; i++) {
+                subs1[i] = onlySubject("Enter Subject Name: ");
+                if (subs1[i] == null) {
+                    System.out.println("Cancelled. No inputs were saved.");
+                    pause();
+                    return;
+                }
+                g1[i] = onlyGrades("Enter grade: ");
+                if (g1[i] == -1) {
+                    System.out.println("Cancelled. No inputs were saved.");
+                    pause();
+                    return;
+                }
+            }
+            for (int j = 0; j < numOfSubs; j++) {
+                subs2[j] = onlySubject("Enter Subject Name: ");
+                if (subs2[j] == null) {
+                    System.out.println("Cancelled. No inputs were saved.");
+                    pause();
+                    return;
+                }
+                g2[j] = onlyGrades("Enter grade: ");
+                if (g2[j] == -1) {
+                    System.out.println("Cancelled. No inputs were saved.");
+                    pause();
+                    return;
+                }
+            }
+            pause();
+            System.out.println("Student saved.");
+            saveStudent(name, subs1, g1, subs2, g2);
+        }
     }
 
     static void updateStudent() throws Exception {
@@ -268,8 +357,9 @@ public class GradesManagementSystem {
         pause();
     }
 
-    static void addStudent() throws Exception {
+    static void deleteStudent() throws Exception {
         System.out.println("Not implemented yet.");
         pause();
     }
+
 }
