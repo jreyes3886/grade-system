@@ -29,12 +29,12 @@ public class GradesManagementSystem {
                     searchStudent();
                     break;
                 case "3":
-                case "update":
-                    updateStudent();
-                    break;
-                case "4":
                 case "add":
                     addStudent();
+                    break;
+                case "4":
+                case "update":
+                   updateStudent();
                     break;
                 case "5":
                 case "delete":
@@ -57,8 +57,8 @@ public class GradesManagementSystem {
         System.out.println("========================================================\n");
         System.out.println("1. Display Student Grades");
         System.out.println("2. Search Student Grades");
-        System.out.println("3. Update Student Grades");
-        System.out.println("4. Add Student Grades");
+        System.out.println("3. Add Student Grades");
+        System.out.println("4. Update Student Grades");
         System.out.println("5. Delete Student Grades");
         System.out.println("0. Exit");
         System.out.print("\nEnter menu number: ");
