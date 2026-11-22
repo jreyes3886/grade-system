@@ -184,10 +184,10 @@ public class GradesManagementSystem {
         String letter = "";
         while (true) {
             System.out.print(name);
-            letter = input.readLine().trim();
-            if (letter.matches("[a-zA-Z ]+")) {
-                return letter;
-            } else {
+            letter = input.readLine().trim(); // remove white spaces
+            if (letter.matches("[a-zA-Z ]+")) { //only accepts letters
+                return letter; //returns and the condition is now false
+            } else { //if invalid loops again
                 System.out.println("Invalid input. Please enter letters only (A-Z).");
             }
         }
@@ -195,13 +195,13 @@ public class GradesManagementSystem {
 
     static String onlyNumbers(String number) throws Exception {
         while (true) {
-            System.out.print(number);
+            System.out.print(number); //gets the prompt of number
             String numberInput = input.readLine();
 
             // "\\d+" checks that the string has 1 or more digits (0-9) and nothing else
             if (numberInput.matches("\\d+")) {
-                return numberInput;
-            } else {
+                return numberInput; // returns and the condition is false
+            } else { //if invalid, loops again
                 System.out.println("Invalid input. Please enter digits only (0-9).");
             }
         }
@@ -210,49 +210,50 @@ public class GradesManagementSystem {
     static String onlySubject(String name) throws Exception {
         String letter = "";
         while (true) {
-            System.out.print(name);
-            letter = input.readLine().trim();
-            if (letter.equalsIgnoreCase("cancel")) {
+            System.out.print(name); //gets the prompt of subjects
+            letter = input.readLine().trim(); //remove white spaces
+            if (letter.equalsIgnoreCase("cancel")) { //if the user cancels
                 System.out.println("Cancelled. No inputs were saved.");
-                return null;
+                return null; //returns and the condition is false
             }
-            if (letter.matches("[a-zA-Z0-9 &]+")) {
-                return letter;
-            } else {
+            if (letter.matches("[a-zA-Z0-9 &]+")) { // if its letters, numbers and symbols
+                return letter; //returns and the condition is false
+            } else { //if its invalid, loops again since the condition is true
                 System.out.println("Invalid input. Please enter letters, numbers and symbols only (A-Z).");
             }
         }
     }
 
     static int onlySubjectAmount(String prompt) throws Exception {
-        while (true) {
-            System.out.print(prompt);
-            String text = input.readLine().trim();
-            if (text.matches("[1-9]")) {
-                return Integer.parseInt(text);
+        while (true) { //loops until it is a valid value
+            System.out.print(prompt); //geths the prompt of amount of subjects
+            String text = input.readLine().trim(); //read and remove white spaces
+            if (text.matches("[1-9]")) { //if the input is 1-9
+                return Integer.parseInt(text); //convert it to integer and return from where its called
             }
-            System.out.println("Invalid input. Enter subjects ranging from 1 to 9");
+            System.out.println("Invalid input. Enter subjects ranging from 1 to 9"); //if the input is invalid
         }
     }
 
     static double onlyGrades(String grades) throws Exception {
         double value;
-        while (true) {
-            System.out.print(grades);
-            String number = input.readLine().trim();
+        while (true) { //loops until the input is a valid value
+            System.out.print(grades); //gets the prompt of grades
+            String number = input.readLine().trim(); //read and remove white spaces
 
-            if (number.equalsIgnoreCase("cancel")) {
-                return -1;
+            if (number.equalsIgnoreCase("cancel")) { //if the user cancles
+                System.out.println("Cancelled. No inputs were saved.");
+                return -1; //return no position and becomes false
             }
-            if (number.matches("(\\d+(\\.\\d*)?|\\.\\d+)")) {
-                value = Double.parseDouble(number);
+            if (number.matches("(\\d+(\\.\\d*)?|\\.\\d+)")) { //if the number matches any number without letters, or symbols
+                value = Double.parseDouble(number); //converts the string into double and saves it to valye
 
-                if (value >= 0.0 && value <= 100.0) {
-                    return value;
+                if (value >= 0.0 && value <= 100.0) { //if the value is greater than 0.0 AND less than 100.0
+                    return value; //returns the value from where its valled and becomes false
                 }
-                System.out.println("Value must be between 0 and 100.");
+                System.out.println("Value must be between 0 and 100."); //if it exceeds 100 or its negative loops again
             } else {
-                System.out.println("Invalid input. Enter a valid number.");
+                System.out.println("Invalid input. Enter a valid number."); //if its symbol or letter loops again
             }
         }
     }
@@ -277,15 +278,15 @@ public class GradesManagementSystem {
             return matches[0]; // doesn't need to ask
         }
         System.out.println("Multiple students found.");
-        for (int j = 0; j < matchCount; j++) {
-            System.out.println((j + 1) + ". " + studentName[matches[j]]);
+        for (int j = 0; j < matchCount; j++) { //gets every match in the first for loop
+            System.out.println((j + 1) + ". " + studentName[matches[j]]); //display every match
         }
         System.out.println("0. Cancel");
-        String answer = onlyNumbers("Pick a number: ");
+        String answer = onlyNumbers("Pick a number: "); //calls onlyNumber function
 
-        for (int k = 0; k < matchCount; k++) {
-            if (answer.equals(String.valueOf(k + 1))) {
-                return matches[k];
+        for (int k = 0; k < matchCount; k++) { 
+            if (answer.equals(String.valueOf(k + 1))) { //onlyNumbers returns string, so if the answer is equal to the value of the row k + 1 (since int k = 0)
+                return matches[k]; //returns the row 
             }
         }
         System.out.println("Cancelled.");
@@ -296,59 +297,61 @@ public class GradesManagementSystem {
         int i;
         String again;
         do {
-            i = selectStudent();
-            if (i != -1) {
-                System.out.println("\nStudent: " + studentName[i]);
-                printStudent(i);
-                break;
+            i = selectStudent(); //gets the selected student
+            if (i != -1) { //if it exists
+                System.out.println("\nStudent: " + studentName[i]); //display the student row
+                printStudent(i); //display student info
+                break; //stops the do while loop
             }
-            System.out.print("Try again? (y/n): ");
-            again = input.readLine().trim().toLowerCase();
-        } while (again.equals("y"));
+            System.out.print("Try again? (y/n): "); // if it cancels gives an option to try again
+            again = input.readLine().trim().toLowerCase(); //removes whitespaces and converts to lowercase
+        } while (again.equals("y")); //loops if the answer is yes, stops the loop if not
         pause();
     }
 
     static void addStudent() throws Exception {
-        if (studentCount < maxStudents) {
-            String name = onlyLetters("Enter student name: ");
-            int numOfSubs = onlySubjectAmount("Enter amount of subjects: ");
-            String[] subs1 = new String[numOfSubs];
-            double[] g1 = new double[numOfSubs];
-            String[] subs2 = new String[numOfSubs];
-            double[] g2 = new double[numOfSubs];
+        if (studentCount < maxStudents) { //if studentcount is less than 50 or the limit
+            String name = onlyLetters("Enter student name: "); //only accepts letters
+            int numOfSubs1 = onlySubjectAmount("Enter amount of subjects: "); //only accepts number 1-9
+            String[] subs1 = new String[numOfSubs1]; //gets the user input of amount of subjects and stores into the local array
+            double[] g1 = new double[numOfSubs1];
             System.out.println("SEMESTER 1:");
             System.out.println("TYPE CANCEL TO CANCEL");
-            for (int i = 0; i < numOfSubs; i++) {
-                subs1[i] = onlySubject("Enter Subject Name: ");
-                if (subs1[i] == null) {
-                    System.out.println("Cancelled. No inputs were saved.");
+            for (int i = 0; i < numOfSubs1; i++) { //loops the same amount of times of what the value of numOfSubs
+                subs1[i] = onlySubject("Enter Subject Name: "); //gets subject name
+                if (subs1[i] == null) { //if the user cancels 
                     pause();
-                    return;
+                    return; //exit
                 }
                 g1[i] = onlyGrades("Enter grade: ");
-                if (g1[i] == -1) {
-                    System.out.println("Cancelled. No inputs were saved.");
+                if (g1[i] == -1) { //if the user cancels
                     pause();
-                    return;
+                    return; //exit
                 }
             }
-            for (int j = 0; j < numOfSubs; j++) {
+            System.out.println("SEMESTER 2: ");
+            int numOfSubs2 = onlySubjectAmount("Enter amount of subjects: ");
+            String[] subs2 = new String[numOfSubs2];
+            double[] g2 = new double[numOfSubs2];
+            for (int j = 0; j < numOfSubs2; j++) {
                 subs2[j] = onlySubject("Enter Subject Name: ");
                 if (subs2[j] == null) {
-                    System.out.println("Cancelled. No inputs were saved.");
                     pause();
                     return;
                 }
                 g2[j] = onlyGrades("Enter grade: ");
                 if (g2[j] == -1) {
-                    System.out.println("Cancelled. No inputs were saved.");
                     pause();
                     return;
                 }
             }
-            pause();
             System.out.println("Student saved.");
-            saveStudent(name, subs1, g1, subs2, g2);
+            saveStudent(name, subs1, g1, subs2, g2); //passes the arrays to save stydent
+            pause();
+        }
+        else {
+            System.out.println("Students are full!");
+            pause();
         }
     }
 
