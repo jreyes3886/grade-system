@@ -73,33 +73,50 @@ public class GradesManagementSystem {
     }
 
     // preloaded names
-    static void preLoaded() throws Exception {
+        static void preLoaded() throws Exception {
         saveStudent("Juan Dela Cruz",
-                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-                new double[] { 90, 85, 92, 88 },
-                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-                new double[] { 87, 95, 83, 93 });
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 90, 85, 92, 88, 84, 97, 89 },
+                new String[] { "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 87, 95, 83, 93, 89, 92, 86 });
         saveStudent("Julian Dela Cruz",
-                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-                new double[] { 88, 90, 85, 91 },
-                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-                new double[] { 89, 92, 86, 90 });
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 88, 90, 85, 91, 81, 95, 88 },
+                new String[] { "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 89, 92, 86, 90, 93, 81, 96 });
         saveStudent("Maria Santos",
-                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-                new double[] { 95, 89, 94, 90 },
-                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-                new double[] { 92, 88, 96, 91 });
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 95, 89, 94, 90, 85, 90, 97 },
+                new String[] { "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 92, 88, 96, 91, 94, 88, 95 });
         saveStudent("Samantha Villanueva",
-                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-                new double[] { 96, 93, 90, 95 },
-                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-                new double[] { 94, 97, 92, 96 });
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 96, 93, 90, 95, 89, 92, 87 },
+                new String[] { "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 94, 97, 92, 96, 90, 85, 93 });
         saveStudent("Nathaniel Cruz",
-                new String[] { "General Mathematics", "Modern Physics", "Communication", "Filipino" },
-                new double[] { 85, 92, 88, 90 },
-                new String[] { "Statistics & Probability", "Biology", "Speech Styles", "Pagpapahalaga sa Filipino" },
-                new double[] { 89, 94, 86, 91 });
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 85, 92, 88, 90, 84, 96, 88 },
+                new String[] { "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 89, 94, 86, 91, 93, 87, 90 });
+        saveStudent("Gehlee Dangca",
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 87, 94, 89, 96, 89, 91, 88 },
+                new String[] { "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 89, 94, 86, 91, 96, 94, 90 });
+        saveStudent("Jeo Ong",
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 91, 84, 98, 87, 93, 82, 95 },
+                new String[] { "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 86, 92, 97, 81, 89, 95, 84 });
+        saveStudent("Primo Alterado",
+                new String[] { "Pre-Calculus", "Probability and Statistics", "General Biology 1", "General Chemistry 1", "General Physics 1", "Practical Research 1", "Disaster Readiness and Risk Reduction", },
+                new double[] { 71, 73, 82, 96, 89, 91, 85 },
+                new String[] { "Pre-Calculus", "Probability and Statistics", "Basic Calculus", "Earth Science", "General Biology 2", "General Chemistry 2", "General Physics 2", "Practical Research 2", "Work Immersion" },
+                new double[] { 83, 85, 83, 97, 88, 92, 90, 95, 86 });
+
     }
+
 
     // save students grades
     static void saveStudent(String name, String[] subs1, double[] g1, String[] subs2, double[] g2) throws Exception {
